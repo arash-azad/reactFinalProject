@@ -1,0 +1,39 @@
+.categoryButtons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin:5vh 0;
+}
+
+.categoryButtons button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: calc(16px + 1vw);
+    border-radius: 5px;
+    transition: background-color 0.2s, color 0.2s;
+}
+.activeButton{
+    border: 5px solid white;
+}
+.categoryButtons button:hover {
+    box-shadow: 5px 0px 20px white;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+@media (max-width: 991px) {
+    .categoryButtons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .categoryButtons button {
+        width: 100%;
+        text-align: center;
+    }
+}

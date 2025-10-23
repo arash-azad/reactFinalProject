@@ -1,0 +1,112 @@
+.gridWrapper {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    display: grid;
+    width: 100%;
+    height: fit-content;
+    padding: 0 10vw;
+    margin-bottom: 10vh;
+    margin-top: 15vh;
+    box-sizing: border-box;
+}
+.cardItem {
+    cursor: pointer;
+    background-color: black;
+    border-radius: 15px;
+    padding: 5vh 5vw;
+    box-sizing: border-box;
+    box-shadow: 5px 0px 20px white;
+    display: flex;
+    gap:3vh;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: white;
+}
+
+.cardItem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px black;
+
+}
+
+.cardImage {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    border-bottom: 5px solid white;
+    border-right: 5px solid white;
+    border-radius: 500px;
+}
+
+.cardTitle {
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
+@media screen and (max-width: 991px) {
+    .gridWrapper {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 5vw;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .gridWrapper {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5vw;
+    }
+}
+
+
+.btnText {
+    color: white;
+}
+
+.buyNowBtn {
+    background-color: #111;
+    color: #fff;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 10px 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.buyNowBtn i {
+    color: white;
+    font-size: 18px;
+}
+
+.buyNowBtn .priceTag {
+    background-color: white;
+    color: black;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 13px;
+}
+.buyNowBtn:hover .btnText {
+    color: black;
+}
+.buyNowBtn:hover {
+    background-color: white;
+    color: black;
+    transform: translateY(-2px);
+}
+
+.buyNowBtn:hover i {
+    color: black;
+}
+
+.buyNowBtn:active {
+    transform: scale(0.97);
+}

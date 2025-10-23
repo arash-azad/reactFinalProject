@@ -1,0 +1,49 @@
+.jewelery {
+    background-image: url(../assets/jeweletycover.jpg);
+}
+
+.manclothing {
+    background-image: url(../assets/banner-lardini.jpg);
+}
+
+.shopall {
+    background-image: url(../assets/Matthew-Hegarty-Banner.jpg);
+}
+
+.electronics {
+    background-image: url(../assets/electronics.webp);
+}
+.linktoshop:hover{
+    box-shadow: 5px 0px 20px white;
+    transform: translateY(-1vh);
+}
+.linktoshop {
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 40vh;
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: calc(20px + 4.5vw);
+    font-weight: bold;
+}
+
+.linktoshop::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    z-index: 1;
+}
+
+.linktoshop span {
+    position: relative;
+    z-index: 2;
+}

@@ -1,0 +1,42 @@
+
+.our-scrolling-ticker {
+    background-color: white;
+    padding: 5px 0;
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
+    overflow: hidden;
+    width: 100%;
+}
+
+.scrolling-ticker-box {
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+}
+
+.scrolling-content {
+    display: flex;
+    gap: 40px;
+    animation: scroll 40s linear infinite;
+    flex-shrink: 0;
+}
+
+.scrolling-content div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    color: black;
+    white-space: nowrap;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}

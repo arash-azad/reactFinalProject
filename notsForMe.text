@@ -1,0 +1,25 @@
+      const[tekrar,settekrar]=useState([])
+  
+  useEffect(() => {
+    api.get("/products/category/jewelery")
+      .then(res => settekrar(res.data))
+      .catch(err => console.error(err));
+  }, []);
+    
+    
+    
+    
+    
+    <div>
+    {tekrar.map(mahsul=>
+    <div key={mahsul.id} >
+      <p>{mahsul.title}</p>
+      <img src={mahsul.image} alt="" />
+    </div>
+    )}
+    </div>             
+
+
+
+
+{ data, isLoading, isError, error, refetch, status }
