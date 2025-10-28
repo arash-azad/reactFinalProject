@@ -1,7 +1,7 @@
 
 export default function LastNews() {
   return (
- <div className=" w-fit px-[10vw] py-[5vh] rounded-[40px] bg-black mx-auto p-6 space-y-6 text-white my-[20vh]">
+ <div className=" w-[65vw]  px-[10vw] py-[5vh] rounded-[40px] border-2 border-white bg-black mx-auto p-6 space-y-6 text-white my-[20vh]">
 
       <div className=" p-6 rounded-lg text-center space-y-4">
         <h2 className="text-2xl font-bold">Latest News</h2>
@@ -11,11 +11,6 @@ export default function LastNews() {
             type="text"
             placeholder="Name"
             className=" text-white p-3 border border-blacj rounded w-full sm:w-2/3"
-          />
-          <input
-            type="text"
-            placeholder="Phone number"
-            className="p-3 border border-white rounded w-full sm:w-2/3"
           />
           <input
             type="email"
@@ -28,5 +23,6 @@ export default function LastNews() {
         </div>
       </div>
     </div>
+
   );
 }

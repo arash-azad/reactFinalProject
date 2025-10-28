@@ -18,3 +18,11 @@ body {
     background-position: center;
     background-size: cover;
 }
+.error {
+    width: 50%;
+    height: 50vh;
+    background-image: url(../assets/error.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}

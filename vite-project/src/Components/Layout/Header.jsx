@@ -11,9 +11,24 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import { NavLink } from 'react-router-dom';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+
+const pages=[{
+  title:'Home',
+  link:"/"
+},
+{
+  title:'Products',
+  link:"/shop"
+},
+{
+  title:'About Us',
+  link:"/about"
+}
+]
+
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Header() {
@@ -39,7 +54,7 @@ function Header() {
     <AppBar sx={{ backgroundColor: '#000000' }} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+            <ShoppingBasketIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -55,7 +70,7 @@ function Header() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            SHOP
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -86,13 +101,15 @@ function Header() {
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+                <MenuItem key={page.title} onClick={handleCloseNavMenu}>
+                  <NavLink to={page.link} style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <Typography sx={{ textAlign: 'center' }}>{page.title}</Typography>
+                  </NavLink>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <ShoppingBasketIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -111,17 +128,34 @@ function Header() {
           >
             LOGO
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
+                <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                  {pages.map((page) => (
+                    <Button
+                      key={page.title}
+                      onClick={handleCloseNavMenu}
+                      sx={{ my: 2, color: 'white', display: 'block' }} 
+                      style={{
+                      marginRight:'1vw',
+                      marginLeft:'1vw',
+                      }}
+                    >
+                      <NavLink
+                        to={page.link}
+                        style={({ isActive }) => ({
+                          textDecoration: 'none',
+
+                          color: isActive ? 'gray' : 'white',
+                          fontWeight: isActive ? '1000' : '500',
+                          outline: isActive ? '5px solid gray' : 'none',
+                          outlineOffset:isActive?'5px':'none',
+                          transition: '0.2s',
+                        })}
+                      >
+                        {page.title}
+                      </NavLink>
+                    </Button>
+                  ))}
+                </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
