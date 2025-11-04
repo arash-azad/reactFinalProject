@@ -24,6 +24,10 @@ const pages=[{
   link:"/shop"
 },
 {
+  title:`Cart`,
+  link:"/cart"
+},
+{
   title:'About Us',
   link:"/about"
 }
@@ -126,7 +130,7 @@ function Header() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            
           </Typography>
                 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                   {pages.map((page) => (

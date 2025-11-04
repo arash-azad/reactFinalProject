@@ -5,6 +5,10 @@ import { useParams } from "react-router-dom"
 import api from "../../../api/api"
 import "../../../Modules/SingleProductPage.css"
 import Counter from "../../Shared/Counter";
+import { useCounterStore } from "../../../store/useCounterStore";
+import { useCartStore } from "../../../store/useCartStore";
+import { useNavigate } from "react-router-dom";
+
 
 const productReviews = [
   "Very good",
@@ -41,7 +45,10 @@ const productReviews = [
 
 
 export default function SingleProductPage(){
-    const {idNumber}=useParams();
+  const {idNumber}=useParams();
+  const count = useCounterStore((state) => state.counters[idNumber] || 0);
+  const addToCart = useCartStore((state) => state.addToCart);
+  const navigate = useNavigate();
     async function queryFn(){
         return await api.get(`products/${idNumber}`)
     }
@@ -59,6 +66,7 @@ export default function SingleProductPage(){
     if(isLoading){
         return(<div>is loading ...</div>)
     }
+    const price = data.price * count;
     return(
         <>
     <div className="biggestInSingle">
@@ -69,12 +77,23 @@ export default function SingleProductPage(){
         <h2 style={{marginBottom:"3vh"}} >{data.title}</h2>
         <h1 style={{marginBottom:"3vh"}}>{data.category}</h1>
         <h3 style={{outline:"2px solid white",padding:"5px",borderRadius:"10px"}} >{data.price} $</h3>
-        <Counter/>
-            <button className="buyNowBtn">
+        <Counter id={idNumber} />
+            <button onClick={() => {
+            if(count>0){
+              addToCart({ id: idNumber, product: data, quantity: count,image: data.image,title: data.title,price: data.price,quantity: count })
+              alert(`${count} - ${data.title} \nhas been added to your cart!`);
+              
+            }
+            else{
+              alert("Please select at least 1 item before adding to the cart")
+            }
+            }
+          } className="buyNowBtn">
             <i className="bi bi-cart-fill"></i>
             <span className="btnText">Buy Now</span>
-            <span className="priceTag">${data.price}</span>
+            <span className="priceTag">${Math.floor(price *10)/10}</span>
             </button>
+            <p style={{outline:"2px solid white",padding:"5px",borderRadius:"10px"}} >${Math.floor(price *10)/10}</p>
       </div>
       <div className=" itemsSingle descriptionSingle" >
         <p>{data.description}</p>

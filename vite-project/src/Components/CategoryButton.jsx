@@ -3,7 +3,7 @@ import "../Modules/CategoryButton.CSS"
 
 export default function CategoryButtons() {
   return (
-    <div className="categoryButtons">
+    <div className="categoryButtons select-none">
       <NavLink to="/shop/all"
         className={({ isActive }) => isActive ? "activeButton" : ""}
       ><button>All</button></NavLink>

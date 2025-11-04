@@ -12,6 +12,7 @@ import About from "./Pages/About";
 import ShopPage from "./Pages/Shop/Shoppage";
 import SingleProductPage from "./Components/Shop/single-product/SingleProductPage";
 import HomePage from "./Pages/HomePage"
+import ShoppingCart from "./Components/Shop/ShoppingCart";
 function App() {
   const queryClient=new QueryClient();
 
@@ -25,6 +26,7 @@ function App() {
                           <Route path="/shop" element={<ShopPage/>}/>
                           <Route path="/shop/:category" element={<ShopPage />} /> 
                           <Route path="about" element={<About/>}/>
+                          <Route path="cart" element={<ShoppingCart/>}/>
                           <Route path="/products/:idNumber" element={<SingleProductPage/>} />
                     </Routes>
               </Layout>

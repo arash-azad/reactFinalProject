@@ -1,17 +1,17 @@
 import { useState } from "react";
 import "../../Modules/Counter.css"
+import { useCounterStore } from "../../store/useCounterStore"
 
-export default function Counter(){
-      const [count, setCount] = useState(0);
-    return(
-        <>
+export default function Counter({ id }) {
+  const count = useCounterStore((state) => state.counters[id] || 0);
+  const increase = useCounterStore((state) => state.increase);
+  const decrease = useCounterStore((state) => state.decrease);
+
+  return (
     <div className="counterBox">
-    <button className="counterBtn" onClick={() =>{ 
-      if(count>0){setCount(count - 1)}
-      }}>-</button>
-    <span className="counterNumber">{count}</span>
-    <button className="counterBtn" onClick={() => setCount(count + 1)}>+</button>
-     </div>
-        </>
-    )
+      <button className="counterBtn" onClick={() => decrease(id)}>-</button>
+      <span className="counterNumber">{count}</span>
+      <button className="counterBtn" onClick={() => increase(id)}>+</button>
+    </div>
+  );
 }
