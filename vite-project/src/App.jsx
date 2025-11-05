@@ -13,6 +13,7 @@ import ShopPage from "./Pages/Shop/Shoppage";
 import SingleProductPage from "./Components/Shop/single-product/SingleProductPage";
 import HomePage from "./Pages/HomePage"
 import ShoppingCart from "./Components/Shop/ShoppingCart";
+import Error from "./Pages/Error404";
 function App() {
   const queryClient=new QueryClient();
 
@@ -22,6 +23,7 @@ function App() {
           <QueryClientProvider client={queryClient} >
                 <Layout>
                     <Routes>
+                        <Route path="*" element={<Error/>} />
                           <Route path="/" element={<HomePage/>}/>
                           <Route path="/shop" element={<ShopPage/>}/>
                           <Route path="/shop/:category" element={<ShopPage />} /> 
