@@ -33,7 +33,7 @@ const pages=[{
 }
 ]
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile'];
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -184,7 +184,9 @@ function Header() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
+                    <NavLink to="/login" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
+                      <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
+                    </NavLink>
                 </MenuItem>
               ))}
             </Menu>

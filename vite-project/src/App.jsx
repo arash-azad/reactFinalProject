@@ -14,6 +14,10 @@ import SingleProductPage from "./Components/Shop/single-product/SingleProductPag
 import HomePage from "./Pages/HomePage"
 import ShoppingCart from "./Components/Shop/ShoppingCart";
 import Error from "./Pages/Error404";
+import AdminPage from "./admin/Admin";
+import LoginPage from "./Login/LoginPage";
+import ProtectedRoute from "./Components/ProtectedRoute";
+
 function App() {
   const queryClient=new QueryClient();
 
@@ -30,6 +34,8 @@ function App() {
                           <Route path="about" element={<About/>}/>
                           <Route path="cart" element={<ShoppingCart/>}/>
                           <Route path="/products/:idNumber" element={<SingleProductPage/>} />
+                          <Route path="/admin"element={<ProtectedRoute><AdminPage /></ProtectedRoute>}/>
+                          <Route path="login" element={<LoginPage/>} />
                     </Routes>
               </Layout>
           </QueryClientProvider>

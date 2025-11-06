@@ -43,7 +43,7 @@ export default function DiscountTime() {
     <div className="w-full flex justify-center" >
     <div  className=" font-[700] my-[10vh] mx-10 px-[5vw] py-[5vh] w-fit h-fit text-center border-y-[20px] rounded-[40px] cursor-pointer bg-white flex justify-center flex-col" >
     <p style={{fontSize:"calc(20px + 1vw)"}} className="flex justify-center text-center">
-    Time left until the sale starts:
+    Time left until the sale ends:
     </p> <br />
     <p style={{fontSize:"calc(20px + 1vw)"}} className="flex justify-center text-center">
       {timeLeft.days} days {timeLeft.hours} hours {timeLeft.minutes} minutes {" "}

@@ -5,6 +5,7 @@ import Navitems from "../Components/Home/Navitems";
 import DiscountTime from "../Components/DiscountTime";
 import DisabledAccordion from "../Components/Home/QuestionsaAccordion";
 import LastNews from "../Components/Home/LastNews";
+import DiscountCodeCard from "../Components/Shop/DiscountCode";
 
 
 export default function HomePage(){
@@ -13,10 +14,10 @@ export default function HomePage(){
         
     <ScrollingTicker/>
     <DiscountTime/>
+    <DiscountCodeCard/>
     <Navitems/>
     <DisabledAccordion/>
     <LastNews/>
-
 
         </>
     )

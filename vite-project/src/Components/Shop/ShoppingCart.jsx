@@ -1,7 +1,8 @@
 import { useCartStore } from "../../store/useCartStore";
 import { useNavigate } from "react-router-dom";
 import { useCounterStore } from "../../store/useCounterStore";
-
+import { useValueStore } from "../../store/useValueStore";
+import { useState } from "react";
 
 export default function ShoppingCart() {
   const cart = useCartStore((state) => state.cart);
@@ -9,12 +10,28 @@ export default function ShoppingCart() {
   const resetCounter = useCounterStore((state) => state.reset);
 
   const navigate = useNavigate();
+  const { inputValue } = useValueStore();
+
+    const [discountCode, setDiscountCode] = useState("");
+  const [discountApplied, setDiscountApplied] = useState(false);
 
   const totalPrice = cart.reduce(
     (total, item) => total + item.price * item.quantity,
     0
   );
 console.log(cart)
+
+  const handleDiscountSubmit = (e) => {
+    e.preventDefault();
+    if (discountCode === inputValue) { 
+      setDiscountApplied(true);
+    } else {
+      setDiscountApplied(false);
+      alert("Invalid code");
+    }
+    setDiscountCode("");
+  };
+const finalPrice = discountApplied ? totalPrice * 0.7 : totalPrice;
 
   return (
     <div className="" style={{ padding: "2rem" }}>
@@ -52,9 +69,28 @@ console.log(cart)
             <div className="h-fit p-1 text-white mt-[3vh] lg:mt-0 rounded-[5px] bg-black border-2 w-fit cursor-pointer" onClick={() => navigate(`/products/${item.id}`)} >Edit</div>
             </div>
           ))}
+          
           <div className="w-full flex justify-center mt-[5vh] ">
             <div className="w-fit h-fit bg-black p-3">
-          <p className=" text-center text-white" style={{fontSize:"calc(15px + 1.5vw)"}}><i className="bi bi-tags"></i> Total cost : ${totalPrice.toFixed(2)}</p>
+              <p className=" text-center text-white" style={{fontSize:"calc(15px + 1.5vw)"}}>
+                <i className="bi bi-tags"></i> Total cost : ${finalPrice.toFixed(2)}
+                {discountApplied && " (30% off applied!)"}
+              </p>
+            </div>
+          </div>
+          <div className="w-full flex justify-center" >
+          <div className="w-fit flex justify-center mt-[5vh] bg-black py-[5vh] px-[5vw]">
+            <form onSubmit={handleDiscountSubmit} className="flex gap-2">
+             <input
+                type="text"
+                  placeholder="Enter discount code"
+                  value={discountCode}
+                  onChange={(e) => setDiscountCode(e.target.value)}
+                  className="border border-white rounded px-3 py-2 placeholder-white"/>
+                <button
+                    type="submit"
+                      className="bg-black  text-white px-4 py-2 rounded border border-white">Apply</button>
+                </form>
             </div>
           </div>
         </>
