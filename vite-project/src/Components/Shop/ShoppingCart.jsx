@@ -58,7 +58,7 @@ const finalPrice = discountApplied ? totalPrice * 0.7 : totalPrice;
               key={item.id}
             >
               <p className="text-center" >
-                {item.title} <br /><br /> ${item.price} × {item.quantity} = ${(item.price * item.quantity)}
+                {item.title} <br /><br /> ${item.price} × {item.quantity} = ${(Math.floor(item.price*10)/10 * item.quantity)}
               </p>
             </div><br />
             <div className="h-fit text-white  lg:mr-[3vw] p-1 rounded-[5px] bg-black border-2 w-fit cursor-pointer" onClick={() =>{
@@ -79,17 +79,17 @@ const finalPrice = discountApplied ? totalPrice * 0.7 : totalPrice;
             </div>
           </div>
           <div className="w-full flex justify-center" >
-          <div className="w-fit flex justify-center mt-[5vh] bg-black py-[5vh] px-[5vw]">
-            <form onSubmit={handleDiscountSubmit} className="flex gap-2">
+          <div className="flex justify-center mt-[5vh] bg-black py-[5vh] px-[5vw] rounded-4xl">
+            <form onSubmit={handleDiscountSubmit} className=" flex flex-col lg:flex-row gap-2">
              <input
                 type="text"
                   placeholder="Enter discount code"
                   value={discountCode}
                   onChange={(e) => setDiscountCode(e.target.value)}
-                  className="border border-white rounded px-3 py-2 placeholder-white"/>
+                  className="border text-white border-white rounded px-3 py-2 placeholder-white"/>
                 <button
                     type="submit"
-                      className="bg-black  text-white px-4 py-2 rounded border border-white">Apply</button>
+                      className="bg-black cursor-pointer  text-white px-4 py-2 rounded border border-white">Apply</button>
                 </form>
             </div>
           </div>

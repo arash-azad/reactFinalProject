@@ -75,7 +75,7 @@ export default function ShopPage() {
             value={searchTerms[category] || ""}
             onChange={onChangeSearch}
             placeholder="Search by title..."
-            className="searchInput bg-white  placeholder-black placeholder:bold placeholder:[200px] px-3 py-2 w-[20vw] rounded-lg border-5 border-black"
+            className="searchInput bg-white placeholder-black placeholder:bold placeholder:[200px] px-3 py-2 w-[50vw] rounded-lg border-5 border-black"
           />
         </div>
 
